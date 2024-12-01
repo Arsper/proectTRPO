@@ -56,7 +56,7 @@ public class Player : MonoBehaviour
             {
                 movespeed = 2f;
                 animator.SetInteger("Move", 1);
-                
+
             }
         }
         else
