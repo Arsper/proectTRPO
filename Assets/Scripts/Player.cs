@@ -4,20 +4,20 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
- //классическое перемещение игрока
 
-    public float movespeed;
-    public float sensitivity;
-    public float gravity;
+    [SerializeField] private float movespeed;
+    [SerializeField] private float sensitivity;
+    [SerializeField] private float gravity;
     private float mouseX;
     private float mouseY;
     private float vertical;
     private float horizontal;
 
-    public Vector2 clampangle;
+    [SerializeField] private Vector2 clampangle;
     private Vector3 Velocity;
     private Vector2 angle;
-    public Transform cameraTransform; //камера внутри игрока
+
+    [SerializeField] private Transform cameraTransform;
 
     private CharacterController charactercontroller;
 
@@ -34,15 +34,20 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        HandleMovement();
+    }
+
+    private void HandleMovement() 
+    {
         vertical = Input.GetAxis("Vertical");
         horizontal = Input.GetAxis("Horizontal");
 
         Vector3 playerMovementInput = new Vector3(horizontal, 0.0f, vertical);
         Vector3 moveVector = transform.TransformDirection(playerMovementInput);
 
-        if (Input.GetAxis("Vertical") > 0 || Input.GetAxis("Vertical") < 0 || Input.GetAxis("Horizontal") > 0 || Input.GetAxis("Horizontal") < 0)
+        if (vertical > 0 || vertical < 0 || horizontal > 0 || horizontal < 0)
         {
-            if (Input.GetKey(KeyCode.LeftShift) && Input.GetAxis("Vertical") > 0)
+            if (Input.GetKey(KeyCode.LeftShift) && vertical > 0)
             {
                 movespeed = 6;
                 animator.SetInteger("Move", 2);
