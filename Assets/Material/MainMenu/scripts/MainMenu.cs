@@ -2,9 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;//подключение библиотеки для перехода между сценами
+using UnityEngine.UIElements;
 
 public class MainMenu : MonoBehaviour
 {
+
+    public GameObject OptionsObject;
+    int switchImage = 0;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +30,7 @@ public class MainMenu : MonoBehaviour
 
     public void Options()
     {
-        Debug.Log("Настройки"); 
+        OptionsObject.SetActive(true); 
     }
 
     public void Quitgame()
