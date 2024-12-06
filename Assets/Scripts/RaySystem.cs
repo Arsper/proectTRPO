@@ -20,9 +20,9 @@ public class RaySystem : MonoBehaviour
                 info.text = null;
             }
 
-            if (hit.collider.tag == "cube")
+            if (hit.collider.tag == "Item")
             {
-                info.text = "cube";
+                info.text = hit.collider.name +" (ЛКМ поднять, пробел бросить)";
             }
         }
         else
