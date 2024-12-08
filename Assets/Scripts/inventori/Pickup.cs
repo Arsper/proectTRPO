@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,23 +15,27 @@ public class Picup : MonoBehaviour
         invertory = GameObject.FindGameObjectWithTag("Player").GetComponent<Invertory>();
         raypoint = GameObject.FindGameObjectWithTag("MainCamera").transform;
     }
-    void LateUpdate()
+    private void AddItemToInventory()
     {
-        if(Physics.Raycast(raypoint.position, raypoint.forward, out hit, 1.75f))
+        if (Physics.Raycast(raypoint.position, raypoint.forward, out hit, 1.75f))
         {
             if (hit.collider.tag == "Item" && Input.GetMouseButtonDown(0))
             {
-                for (int i = 0; invertory.slots.Length > 0; i++)
+                if (invertory.isFull[invertory.numSlot] == false)
                 {
-                    if (invertory.isFull[i] == false)
-                    {
-                        invertory.isFull[i] = true;
-                        Instantiate(slotButton, invertory.slots[i].transform);
-                        Destroy(gameObject);
-                        break;
-                    }
+                    invertory.isFull[invertory.numSlot] = true;
+                    Instantiate(slotButton, invertory.slots[invertory.numSlot].transform);
+                    Destroy(gameObject);
+                }
+                else
+                {
+                    Console.WriteLine("€чейка занета");
                 }
             }
         }
+    }
+    void LateUpdate()
+    {
+        AddItemToInventory();
     }
 }

@@ -8,6 +8,7 @@ public class RaySystem : MonoBehaviour
     private Invertory invertory;
     public Transform raypoint;
     public float usingdistantion = 1.75f;
+    private GameObject slot;
     RaycastHit hit;
     
     public Text info;
@@ -37,14 +38,21 @@ public class RaySystem : MonoBehaviour
 
                 if (Input.GetMouseButtonDown(0))
                 {
-                    for (int i = 0; i < invertory.slots.Length; i++)
+                    try
                     {
-                        if (invertory.isFull[i] == true)
+                        slot = GameObject.Find($"Slot ({invertory.numSlot + 1})");
+                        foreach (Transform child in slot.transform)
                         {
-                            Door door = hit.collider.GetComponent<Door>();
-                            door.Using();
-                            break;
+                            if (child.name=="KeyInMenu(Clone)")
+                            {
+                                Door door = hit.collider.GetComponent<Door>();
+                                door.Using();
+                                break;
+                            }
                         }
+                    }
+                    catch 
+                    {
                     }
                     
                 }
