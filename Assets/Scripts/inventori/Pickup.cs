@@ -21,15 +21,18 @@ public class Picup : MonoBehaviour
         {
             if (hit.collider.tag == "Item" && Input.GetMouseButtonDown(0))
             {
-                if (invertory.isFull[invertory.numSlot] == false)
+                if (invertory.numSlot>=0)
                 {
-                    invertory.isFull[invertory.numSlot] = true;
-                    Instantiate(slotButton, invertory.slots[invertory.numSlot].transform);
-                    Destroy(gameObject);
-                }
-                else
-                {
-                    Console.WriteLine("€чейка занета");
+                    if (invertory.isFull[invertory.numSlot] == false)
+                    {
+                        invertory.isFull[invertory.numSlot] = true;
+                        Instantiate(slotButton, invertory.slots[invertory.numSlot].transform);
+                        Destroy(gameObject);
+                    }
+                    else
+                    {
+                        Console.WriteLine("€чейка занета");
+                    }
                 }
             }
         }

@@ -8,7 +8,7 @@ public class Invertory : MonoBehaviour
 
     public GameObject[] slots;
 
-    public int numSlot = 0;
+    public int numSlot = -1;
 
     private GameObject slot;
 
@@ -59,13 +59,24 @@ public class Invertory : MonoBehaviour
 
     public void PlayAnims(int newNumSlot)
     {
-        slot = GameObject.Find($"Slot ({numSlot + 1})");
-        anim = slot.GetComponent<Animator>();
-        anim.Play("Disabled");
-        numSlot = newNumSlot;
+        if (numSlot>=0)
+        {
+            slot = GameObject.Find($"Slot ({numSlot + 1})");
+            anim = slot.GetComponent<Animator>();
+            anim.Play("Disabled");
+        }
+        if (numSlot!=newNumSlot)
+        {
+            numSlot = newNumSlot;
 
-        slot = GameObject.Find($"Slot ({numSlot + 1})");
-        anim = slot.GetComponent<Animator>();
-        anim.Play("Selected");
+            slot = GameObject.Find($"Slot ({numSlot + 1})");
+            anim = slot.GetComponent<Animator>();
+            anim.Play("Selected");
+        }
+        else
+        {
+            numSlot = -1;
+        }
+        
     }
 }   
