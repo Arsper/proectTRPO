@@ -15,6 +15,7 @@ public class MoveSounds : MonoBehaviour
     private bool isrunning = false;
     private int currentmaterial = 0;
     public float timebetweensounds = 1f;
+    public GameObject LockCamera;
 
 
     private void Start()
@@ -29,7 +30,7 @@ public class MoveSounds : MonoBehaviour
     {
         RaycastHit hit;
 
-        if (Input.GetAxis("Vertical") > 0 || Input.GetAxis("Vertical") < 0 || Input.GetAxis("Horizontal") > 0 || Input.GetAxis("Horizontal") < 0)
+        if (Input.GetAxis("Vertical") > 0 || Input.GetAxis("Vertical") < 0 || Input.GetAxis("Horizontal") > 0 || Input.GetAxis("Horizontal") < 0 && !LockCamera.activeSelf)
         {
             if (Input.GetKey(KeyCode.LeftShift) && Input.GetAxis("Vertical") > 0)
             {

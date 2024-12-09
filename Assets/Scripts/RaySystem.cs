@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Cinemachine;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,9 +10,11 @@ public class RaySystem : MonoBehaviour
     public Transform raypoint;
     public float usingdistantion = 1.75f;
     private GameObject slot;
+    public GameObject LockCamera;
     RaycastHit hit;
     
     public Text info;
+    public Text helpText;
 
     void Start() 
     {
@@ -29,7 +32,7 @@ public class RaySystem : MonoBehaviour
 
             if (hit.collider.tag == "Item")
             {
-                info.text = hit.collider.name +" (ЛКМ поднять, пробел бросить)";
+                info.text = hit.collider.name +" (ЛКМ поднять, E бросить)";
             }
 
             if(hit.collider.tag == "door")
@@ -57,10 +60,20 @@ public class RaySystem : MonoBehaviour
                     
                 }
             }
+            if (hit.collider.tag == "Lock" && !LockCamera.activeSelf)
+            {
+                info.text = "Замок (нажмите Q)";
+                if (Input.GetKeyDown(KeyCode.Q))
+                {
+                    LockCamera.SetActive(true);
+                    info.text = null;
+                    helpText.text = "TAB-Выйти\r\n1-изминения первой ячейки\r\n2-изминения второй ячейки\r\n3-изминения третей ячейки";
+                }
+            }
         }
         else
         {
-            info.text = null;
+            info.text = "";
         }
     }
 

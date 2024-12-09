@@ -22,6 +22,7 @@ public class Player : MonoBehaviour
     private CharacterController charactercontroller;
 
     private Animator animator;
+    public GameObject LockCamera;
 
     private void Start()
     {
@@ -34,7 +35,10 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        HandleMovement();
+        if (!LockCamera.activeSelf)
+        {
+            HandleMovement();
+        }
     }
 
     private void HandleMovement() 

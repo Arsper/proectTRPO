@@ -16,7 +16,7 @@ public class Slot : MonoBehaviour
     private void Update()
     {
         
-        if (Input.GetKeyDown("space"))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             try
             {

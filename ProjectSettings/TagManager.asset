@@ -7,6 +7,8 @@ TagManager:
   - cube
   - Item
   - door
+  - Lock
+  - CamLock
   layers:
   - Default
   - TransparentFX

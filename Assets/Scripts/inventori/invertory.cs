@@ -11,45 +11,49 @@ public class Invertory : MonoBehaviour
     public int numSlot = -1;
 
     private GameObject slot;
+    public GameObject LockCamera;
 
     Animator anim;
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (!LockCamera.activeSelf)
         {
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
 
-            PlayAnims(0);
+                PlayAnims(0);
 
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
 
-            PlayAnims(1);
+                PlayAnims(1);
 
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
 
-            PlayAnims(2);
+                PlayAnims(2);
 
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha4))
+            {
 
-            PlayAnims(3);
+                PlayAnims(3);
 
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha5))
-        {
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha5))
+            {
 
-            PlayAnims(4);
+                PlayAnims(4);
 
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha6))
-        {
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha6))
+            {
 
-            PlayAnims(5);
+                PlayAnims(5);
 
+            }
         }
     }
 
