@@ -13,10 +13,6 @@ public class Invertory : MonoBehaviour
     private GameObject slot;
 
     Animator anim;
-    private void Start()
-    {
-        PlayAnims(0);
-    }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
