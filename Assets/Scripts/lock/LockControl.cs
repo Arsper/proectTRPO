@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class LockControl : MonoBehaviour
 {
@@ -10,17 +11,19 @@ public class LockControl : MonoBehaviour
     public GameObject wheel1;
     public GameObject wheel2;
     public GameObject wheel3;
-    public GameObject LockCamera;
+    private GameObject mainCamera;
     private RaySystem rayS;
+    public GameObject VirtualCam;
     private void Start()
     {
         result = new int[] { 5, 5, 5 };
         correctCombination = new int[] { 3, 7, 9 };
         rayS = GameObject.FindGameObjectWithTag("Player").GetComponent<RaySystem>();
+        mainCamera = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().mainCamera;
     }
     private void Update()
     {
-        if (LockCamera.activeSelf)
+        if (!mainCamera.activeSelf)
         {
             if (Input.GetKeyDown(KeyCode.Alpha1))
             {
@@ -36,7 +39,8 @@ public class LockControl : MonoBehaviour
             }
             if (Input.GetKeyDown(KeyCode.Tab))
             {
-                LockCamera.SetActive(false);
+                mainCamera.SetActive(true);
+                VirtualCam.SetActive(false);
                 rayS.helpText.text = "";
             }
         }
@@ -58,7 +62,8 @@ public class LockControl : MonoBehaviour
         if (result[0] == correctCombination[0] && result[1] == correctCombination[1] && result[2] == correctCombination[2])
         {
             Debug.Log("Opened!");
-            LockCamera.SetActive(false);
+            mainCamera.SetActive(true);
+            VirtualCam.SetActive(false);
             rayS.helpText.text = "";
         }
     }

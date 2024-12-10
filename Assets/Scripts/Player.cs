@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -17,12 +18,11 @@ public class Player : MonoBehaviour
     private Vector3 Velocity;
     private Vector2 angle;
 
-    [SerializeField] private Transform cameraTransform;
+    public GameObject mainCamera;
 
     private CharacterController charactercontroller;
 
     private Animator animator;
-    public GameObject LockCamera;
 
     private void Start()
     {
@@ -35,7 +35,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if (!LockCamera.activeSelf)
+        if (mainCamera.activeSelf)
         {
             HandleMovement();
         }
@@ -91,6 +91,6 @@ public class Player : MonoBehaviour
         Quaternion rotation = Quaternion.Euler(angle.x, angle.y, 0.0f);
         Quaternion rotationTwo = Quaternion.Euler(0.0f, angle.y, 0.0f);
         transform.rotation = rotationTwo;
-        cameraTransform.rotation = rotation;
+        mainCamera.transform.rotation = rotation;
     }
 }

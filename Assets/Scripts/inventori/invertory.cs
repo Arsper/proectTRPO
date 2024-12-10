@@ -11,12 +11,16 @@ public class Invertory : MonoBehaviour
     public int numSlot = -1;
 
     private GameObject slot;
-    public GameObject LockCamera;
+    private GameObject mainCamera;
 
     Animator anim;
+    private void Start()
+    {
+        mainCamera = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().mainCamera;
+    }
     private void Update()
     {
-        if (!LockCamera.activeSelf)
+        if (mainCamera.activeSelf)
         {
             if (Input.GetKeyDown(KeyCode.Alpha1))
             {

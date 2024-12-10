@@ -1,6 +1,7 @@
 ﻿using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,7 +11,7 @@ public class RaySystem : MonoBehaviour
     public Transform raypoint;
     public float usingdistantion = 1.75f;
     private GameObject slot;
-    public GameObject LockCamera;
+    public GameObject mainCamera;
     RaycastHit hit;
     
     public Text info;
@@ -19,6 +20,7 @@ public class RaySystem : MonoBehaviour
     void Start() 
     {
         invertory = GameObject.FindGameObjectWithTag("Player").GetComponent<Invertory>();
+        mainCamera = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().mainCamera;
     }
 
     void LateUpdate()
@@ -60,12 +62,14 @@ public class RaySystem : MonoBehaviour
                     
                 }
             }
-            if (hit.collider.tag == "Lock" && !LockCamera.activeSelf)
+            if (hit.collider.tag == "Lock" && mainCamera.activeSelf)
             {
                 info.text = "Замок (нажмите Q)";
                 if (Input.GetKeyDown(KeyCode.Q))
                 {
-                    LockCamera.SetActive(true);
+                    GameObject key = hit.collider.GameObject();
+                    key.GetComponent<LockControl>().VirtualCam.SetActive(true);
+                    mainCamera.SetActive(false);
                     info.text = null;
                     helpText.text = "TAB-Выйти\r\n1-изминения первой ячейки\r\n2-изминения второй ячейки\r\n3-изминения третей ячейки";
                 }
