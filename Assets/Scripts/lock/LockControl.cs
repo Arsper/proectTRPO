@@ -14,12 +14,14 @@ public class LockControl : MonoBehaviour
     private GameObject mainCamera;
     private RaySystem rayS;
     public GameObject VirtualCam;
+    public Flashlight Flashlight;
     private void Start()
     {
         result = new int[] { 5, 5, 5 };
         correctCombination = new int[] { 3, 7, 9 };
         rayS = GameObject.FindGameObjectWithTag("Player").GetComponent<RaySystem>();
         mainCamera = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().mainCamera;
+        Flashlight = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<Flashlight>();
     }
     private void Update()
     {
@@ -37,9 +39,10 @@ public class LockControl : MonoBehaviour
             {
                 StartCoroutine(RotateWheel(wheel3,2));
             }
-            if (Input.GetKeyDown(KeyCode.Tab))
+            if (Input.GetKeyDown(KeyCode.Q))
             {
                 mainCamera.SetActive(true);
+                Flashlight.canLight = true;
                 VirtualCam.SetActive(false);
                 rayS.helpText.text = "";
             }
@@ -63,6 +66,7 @@ public class LockControl : MonoBehaviour
         {
             Debug.Log("Opened!");
             mainCamera.SetActive(true);
+            Flashlight.canLight = true;
             VirtualCam.SetActive(false);
             rayS.helpText.text = "";
         }

@@ -14,12 +14,9 @@ public class Invertory : MonoBehaviour
     private GameObject mainCamera;
 
     Animator anim;
-    private void Start()
-    {
-        mainCamera = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().mainCamera;
-    }
     private void Update()
     {
+        mainCamera = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().mainCamera;
         if (mainCamera.activeSelf)
         {
             if (Input.GetKeyDown(KeyCode.Alpha1))
