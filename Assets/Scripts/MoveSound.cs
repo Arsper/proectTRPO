@@ -15,6 +15,7 @@ public class MoveSounds : MonoBehaviour
     private bool isrunning = false;
     private int currentmaterial = 0;
     public float timebetweensounds = 1f;
+    private GameObject mainCamera;
 
 
     private void Start()
@@ -23,13 +24,14 @@ public class MoveSounds : MonoBehaviour
         InvokeRepeating("RunSound", 0, timebetweensounds / 1.4f);
         InvokeRepeating("Nothing", 0, 1.5f);
         source = GetComponent<AudioSource>();
+        mainCamera = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().mainCamera;
     }
 
     void Update()
     {
         RaycastHit hit;
 
-        if (Input.GetAxis("Vertical") > 0 || Input.GetAxis("Vertical") < 0 || Input.GetAxis("Horizontal") > 0 || Input.GetAxis("Horizontal") < 0)
+        if (Input.GetAxis("Vertical") > 0 || Input.GetAxis("Vertical") < 0 || Input.GetAxis("Horizontal") > 0 || Input.GetAxis("Horizontal") < 0 && mainCamera.activeSelf)
         {
             if (Input.GetKey(KeyCode.LeftShift) && Input.GetAxis("Vertical") > 0)
             {

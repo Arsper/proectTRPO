@@ -1,21 +1,28 @@
-﻿using System.Collections;
+﻿using Cinemachine;
+using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class RaySystem : MonoBehaviour
 {
     private Invertory invertory;
+    private Flashlight flashlight;
     public Transform raypoint;
     public float usingdistantion = 1.75f;
     private GameObject slot;
+    public GameObject mainCamera;
     RaycastHit hit;
     
     public Text info;
+    public Text helpText;
 
     void Start() 
     {
         invertory = GameObject.FindGameObjectWithTag("Player").GetComponent<Invertory>();
+        mainCamera = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().mainCamera;
+        flashlight = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<Flashlight>();
     }
 
     void LateUpdate()
@@ -29,14 +36,14 @@ public class RaySystem : MonoBehaviour
 
             if (hit.collider.tag == "Item")
             {
-                info.text = hit.collider.name +" (ЛКМ поднять, пробел бросить)";
+                info.text = hit.collider.name +" (E поднять, Q бросить)";
             }
 
             if(hit.collider.tag == "door")
             {
-                info.text = "дверь";
+                info.text = "дверь(E открыть)";
 
-                if (Input.GetMouseButtonDown(0))
+                if (Input.GetKeyDown(KeyCode.E))
                 {
                     try
                     {
@@ -57,10 +64,23 @@ public class RaySystem : MonoBehaviour
                     
                 }
             }
+            if (hit.collider.tag == "Lock" && mainCamera.activeSelf)
+            {
+                info.text = "Замок (нажмите E)";
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    GameObject key = hit.collider.GameObject();
+                    key.GetComponent<LockControl>().VirtualCam.SetActive(true);
+                    flashlight.canLight = false;
+                    mainCamera.SetActive(false);
+                    info.text = null;
+                    helpText.text = "Q-Выйти\r\n1-изминения первой ячейки\r\n2-изминения второй ячейки\r\n3-изминения третей ячейки";
+                }
+            }
         }
         else
         {
-            info.text = null;
+            info.text = "";
         }
     }
 

@@ -19,7 +19,7 @@ public class Picup : MonoBehaviour
     {
         if (Physics.Raycast(raypoint.position, raypoint.forward, out hit, 1.75f))
         {
-            if (hit.collider.tag == "Item" && Input.GetMouseButtonDown(0))
+            if (hit.collider.tag == "Item" && Input.GetKeyDown(KeyCode.E))
             {
                 if (invertory.numSlot>=0)
                 {
