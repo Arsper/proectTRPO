@@ -33,7 +33,7 @@ public class MoveSounds : MonoBehaviour
 
         if (Input.GetAxis("Vertical") > 0 || Input.GetAxis("Vertical") < 0 || Input.GetAxis("Horizontal") > 0 || Input.GetAxis("Horizontal") < 0 && mainCamera.activeSelf)
         {
-            if (Input.GetKey(KeyCode.LeftShift) && Input.GetAxis("Vertical") > 0)
+            if (Input.GetKey(KeyCode.LeftShift) && Input.GetAxis("Vertical") > 0 )
             {
                 ismoving = false;
                 isrunning = true;

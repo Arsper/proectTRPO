@@ -1,12 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class LockControl : MonoBehaviour
 {
-    private int[] result, correctCombination;
+    private int[] result;
+    public int[] correctCombination;
     private bool coroutineAllowed;
     public GameObject wheel1;
     public GameObject wheel2;
@@ -14,14 +16,17 @@ public class LockControl : MonoBehaviour
     private GameObject mainCamera;
     private RaySystem rayS;
     public GameObject VirtualCam;
-    public Flashlight Flashlight;
+    private Flashlight Flashlight;
+    private Rigidbody lockRig;
+    private Animator Animator;
     private void Start()
     {
         result = new int[] { 5, 5, 5 };
-        correctCombination = new int[] { 3, 7, 9 };
         rayS = GameObject.FindGameObjectWithTag("Player").GetComponent<RaySystem>();
         mainCamera = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().mainCamera;
         Flashlight = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<Flashlight>();
+        lockRig = GetComponent<Rigidbody>();
+        Animator = GetComponent<Animator>();
     }
     private void Update()
     {
@@ -68,6 +73,9 @@ public class LockControl : MonoBehaviour
             mainCamera.SetActive(true);
             Flashlight.canLight = true;
             VirtualCam.SetActive(false);
+            lockRig.isKinematic = false;
+            Animator.SetTrigger("isOpen");
+            gameObject.tag = "Untagged";
             rayS.helpText.text = "";
         }
     }
