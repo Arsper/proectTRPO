@@ -11,70 +11,39 @@ public class Invertory : MonoBehaviour
 
     public GameObject[] slots;
 
-    public int numSlot = -1;
+    public int numSlot = 0;
 
     private GameObject slot;
     private GameObject mainCamera;
 
     Animator anim;
 
-    private KeyCode lastKeyPressed;
-
+    private void FixedUpdate()
+    {
+        
+    }
 
     private void Update()
     {
         mainCamera = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().mainCamera;
         if (mainCamera.activeSelf)
         {
-            foreach (KeyCode key in System.Enum.GetValues(typeof(KeyCode)))
+
+            for(int i =0; i < slots.Length;i++)
             {
-                if (Input.GetKeyDown(key) && key >= KeyCode.Alpha1 && key <= KeyCode.Alpha6)
+                if (Input.GetKeyDown((i+1).ToString()))
                 {
-                    lastKeyPressed = key; 
-                    Debug.Log($"Нажата клавиша: {lastKeyPressed}");
-                    break;
+
+                    PlayAnims(i);
+
                 }
-            }
-
-            if (Input.GetKeyDown($"{lastKeyPressed}"))
-            {
-
-                PlayAnims(Convert.ToInt32(lastKeyPressed));
 
             }
-            //if (Input.GetKeyDown($"2"))
-            //{
 
-            //    PlayAnims(1);
-
-            //}
-            //if (Input.GetKeyDown($"3"))
-            //{
-
-            //    PlayAnims(2);
-
-            //}
-            //if (Input.GetKeyDown($"4"))
-            //{
-
-            //    PlayAnims(3);
-
-            //}
-            //if (Input.GetKeyDown($"5"))
-            //{
-
-            //    PlayAnims(4);
-
-            //}
-            //if (Input.GetKeyDown($"6"))
-            //{
-
-            //    PlayAnims(5);
-
-            //}
         }
     }
 
+   
     public void PlayAnims(int newNumSlot)
     {
         if (numSlot>=0)
