@@ -13,7 +13,7 @@ public class MoveSounds : MonoBehaviour
 
     private bool ismoving = false;
     private bool isrunning = false;
-    private int currentmaterial = 0;
+    //private int currentmaterial = 0;
     public float timebetweensounds = 1f;
     private GameObject mainCamera;
 

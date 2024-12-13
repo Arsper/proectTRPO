@@ -6,11 +6,11 @@ public class keyBind : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    UnityEngine.UI.Text tst = null;
+    UnityEngine.UI.Text KeyBindText = null;
 
-    public void setKey(UnityEngine.UI.Text ts)
+    public void setKey(UnityEngine.UI.Text pressedKey)
     {
-        tst = ts;
+        KeyBindText = pressedKey;
     }
 
     void Start()
@@ -22,12 +22,12 @@ public class keyBind : MonoBehaviour
     void Update()
     {
         
-        if(tst != null)
+        if(KeyBindText != null)
         {
             if(Input.GetKey(Event.KeyboardEvent(Input.inputString).keyCode))
             {
-                tst.text = "Key: " + Input.inputString;
-                tst = null;
+                KeyBindText.text = Input.inputString;
+                KeyBindText = null;
             }
         }
 
