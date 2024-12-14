@@ -9,6 +9,7 @@ TagManager:
   - door
   - Lock
   - CamLock
+  - Paper
   layers:
   - Default
   - TransparentFX

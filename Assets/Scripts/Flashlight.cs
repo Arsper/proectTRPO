@@ -27,7 +27,7 @@ public class Flashlight : MonoBehaviour
 
     private void Update()
     {
-        if (canLight)
+        if (canLight && GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().canMove)
         {
             HandleMovement();
             light.enabled = true;

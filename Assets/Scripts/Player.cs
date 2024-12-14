@@ -24,6 +24,7 @@ public class Player : MonoBehaviour
 
     private Animator animator;
 
+    public bool canMove = true;
     private void Start()
     {
         charactercontroller = GetComponent<CharacterController>();
@@ -35,7 +36,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if (mainCamera.activeSelf)
+        if (mainCamera.activeSelf && canMove)
         {
             HandleMovement();
         }

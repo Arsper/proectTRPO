@@ -13,6 +13,7 @@ public class RaySystem : MonoBehaviour
     public float usingdistantion = 1.75f;
     private GameObject slot;
     public GameObject mainCamera;
+    public GameObject PaperInfo;
     RaycastHit hit;
     
     public Text info;
@@ -75,6 +76,15 @@ public class RaySystem : MonoBehaviour
                     mainCamera.SetActive(false);
                     info.text = null;
                     helpText.text = "Q-Выйти\r\n1-изминения первой ячейки\r\n2-изминения второй ячейки\r\n3-изминения третей ячейки";
+                }
+            }
+            if (hit.collider.tag == "Paper")
+            {
+                info.text = "Бумага (нажмите E)";
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().canMove = false;
+                    PaperInfo.SetActive(true);
                 }
             }
         }
