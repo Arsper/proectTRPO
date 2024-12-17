@@ -14,6 +14,7 @@ public class RaySystem : MonoBehaviour
     private GameObject slot;
     public GameObject mainCamera;
     public GameObject PaperInfo;
+    public GameObject PaperInfo1;
     RaycastHit hit;
     
     public Text info;
@@ -75,7 +76,7 @@ public class RaySystem : MonoBehaviour
                     flashlight.canLight = false;
                     mainCamera.SetActive(false);
                     info.text = null;
-                    helpText.text = "Q-Выйти\r\n1-изминения первой ячейки\r\n2-изминения второй ячейки\r\n3-изминения третей ячейки";
+                    helpText.text = "Q-Выйти\r\n1-изменения первой ячейки\r\n2-изменения второй ячейки\r\n3-изменения третей ячейки";
                 }
             }
             if (hit.collider.tag == "Paper")
@@ -85,6 +86,15 @@ public class RaySystem : MonoBehaviour
                 {
                     GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().canMove = false;
                     PaperInfo.SetActive(true);
+                }
+            }
+            if (hit.collider.tag == "Paper1")
+            {
+                info.text = "Запись (нажмите E)";
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().canMove = false;
+                    PaperInfo1.SetActive(true);
                 }
             }
         }

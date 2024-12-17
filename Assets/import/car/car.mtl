@@ -1,0 +1,82 @@
+newmtl Cover1Mtl
+Material Color
+Ka 0.373615 0.368591 0.383775
+Kd 0.373615 0.368591 0.383775
+Ks 0.0322335 0.0318 0.03311 
+
+d 1
+
+Ns 255
+
+map_Ka Cover1_diff.png
+map_Kd Cover1_diff.png
+map_d Cover1_diff.png
+
+map_Bump Cover1_nmap.png
+
+map_Ns Cover1_spec.png
+
+newmtl Glass1Mtl
+Material Color
+Ka 1 1 1
+Kd 1 1 1
+Ks 1 1 1 
+
+d 0.2
+
+Ns 0
+
+map_Ka Glass1_diff.png
+map_Kd Glass1_diff.png
+map_d Glass1_diff.png
+
+newmtl Interior1Mtl
+Material Color
+Ka 0.373615 0.368591 0.383775
+Kd 0.373615 0.368591 0.383775
+Ks 0.0322335 0.0318 0.03311 
+
+d 1
+
+Ns 255
+
+map_Ka Interior1_diff.png
+map_Kd Interior1_diff.png
+map_d Interior1_diff.png
+
+newmtl 11Mtl
+Material Color
+Ka 0.373615 0.368591 0.383775
+Kd 0.373615 0.368591 0.383775
+Ks 0.0322335 0.0318 0.03311 
+
+d 1
+
+Ns 255
+
+map_Ka 11_diff.png
+map_Kd 11_diff.png
+map_d 11_diff.png
+
+map_Bump 11_nmap.png
+
+map_Ns 11_spec.png
+
+newmtl Body1Mtl
+Material Color
+Ka 0.373615 0.368591 0.383775
+Kd 0.373615 0.368591 0.383775
+Ks 0.0322335 0.0318 0.03311 
+
+d 1
+
+Ns 255
+
+map_Ka Body1_diff.png
+map_Kd Body1_diff.png
+map_d Body1_diff.png
+
+map_Bump Body1_nmap.png
+
+map_Ns Body1_spec.png
+
