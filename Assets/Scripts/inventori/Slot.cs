@@ -7,6 +7,7 @@ public class Slot : MonoBehaviour
 {
     private Invertory invertory;
     private GameObject slot;
+    public static string dropButton = "q";
 
     public void Start()
     {
@@ -16,7 +17,7 @@ public class Slot : MonoBehaviour
     private void Update()
     {
         
-        if (Input.GetKeyDown("q"))
+        if (Input.GetKeyDown(dropButton))
         {
             try
             {

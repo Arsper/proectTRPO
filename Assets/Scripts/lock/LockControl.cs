@@ -48,6 +48,7 @@ public class LockControl : MonoBehaviour
             }
         }
     }
+
     private IEnumerator RotateWheel(GameObject wheel,int numRes)
     {
         coroutineAllowed = false;

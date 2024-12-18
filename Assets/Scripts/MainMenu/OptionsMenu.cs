@@ -13,7 +13,7 @@ public class OptionsMenu : MonoBehaviour
     public Toggle Filter;
 
     public GameObject OptionsObject;
-    // Start is called before the first frame update
+
     void Start()
     {
 
