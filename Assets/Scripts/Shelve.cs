@@ -13,11 +13,12 @@ public class Shelve : MonoBehaviour
     public float drawerSpeed = 3.0f;
     private bool isDrawerOpen = false;
     public Text info;
+    public float positionZ;
 
     void Start()
     {
         closedPosition = drawer.transform.localPosition;
-        openPosition = closedPosition + new Vector3(0, 0, 0.5f);
+        openPosition = closedPosition + new Vector3(0, 0, positionZ);
     }
 
     void Update()
