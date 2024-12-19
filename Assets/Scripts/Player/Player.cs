@@ -24,8 +24,7 @@ public class Player : MonoBehaviour
 
     private Animator animator;
 
-    public static string accelerationButton = "left shift";
-
+    public bool canMove = true;
     private void Start()
     {
         charactercontroller = GetComponent<CharacterController>();
@@ -37,7 +36,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if (mainCamera.activeSelf)
+        if (mainCamera.activeSelf && canMove)
         {
             HandleMovement();
         }
@@ -51,11 +50,9 @@ public class Player : MonoBehaviour
         Vector3 playerMovementInput = new Vector3(horizontal, 0.0f, vertical);
         Vector3 moveVector = transform.TransformDirection(playerMovementInput);
 
-        
-
         if (vertical > 0 || vertical < 0 || horizontal > 0 || horizontal < 0)
         {
-            if (Input.GetKey($"{accelerationButton}") && vertical > 0)
+            if (Input.GetKey(KeyCode.LeftShift) && vertical > 0)
             {
                 movespeed = 6;
                 animator.SetInteger("Move", 2);
