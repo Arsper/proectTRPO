@@ -30,7 +30,7 @@ public class Player : MonoBehaviour
         charactercontroller = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
 
-        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.lockState = CursorLockMode.None;
         Cursor.visible = false;
     }
 

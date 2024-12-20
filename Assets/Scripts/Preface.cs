@@ -39,4 +39,15 @@ public class Preface : MonoBehaviour
     {
         SceneManager.LoadScene(2);
     }
+
+    public void x3()
+    {
+        typingSpeed = typingSpeed/3f;
+    }
+    public void skip()
+    {
+        StopAllCoroutines();
+        storyText.text = fullText;
+        startButton.gameObject.SetActive(true);
+    }
 }
